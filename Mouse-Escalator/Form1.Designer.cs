@@ -34,6 +34,13 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.fileSelectButton = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.resultFilePath = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.stopButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
@@ -56,6 +63,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.speedChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.locationChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.resultFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.speedSelect5)).BeginInit();
@@ -86,6 +94,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.fileSelectButton);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.resultFilePath);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.stopButton);
             this.tabPage1.Controls.Add(this.startButton);
@@ -113,11 +128,80 @@
             this.tabPage1.Text = "設定";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // fileSelectButton
+            // 
+            this.fileSelectButton.Location = new System.Drawing.Point(759, 289);
+            this.fileSelectButton.Name = "fileSelectButton";
+            this.fileSelectButton.Size = new System.Drawing.Size(56, 23);
+            this.fileSelectButton.TabIndex = 47;
+            this.fileSelectButton.Text = "瀏覽";
+            this.fileSelectButton.UseVisualStyleBackColor = true;
+            this.fileSelectButton.Click += new System.EventHandler(this.fileSelectButton_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("新細明體", 11F);
+            this.label9.Location = new System.Drawing.Point(322, 293);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 15);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "儲存位置:";
+            // 
+            // resultFilePath
+            // 
+            this.resultFilePath.BackColor = System.Drawing.Color.White;
+            this.resultFilePath.Location = new System.Drawing.Point(399, 287);
+            this.resultFilePath.Name = "resultFilePath";
+            this.resultFilePath.ReadOnly = true;
+            this.resultFilePath.Size = new System.Drawing.Size(354, 25);
+            this.resultFilePath.TabIndex = 45;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("新細明體", 11F);
+            this.label8.Location = new System.Drawing.Point(802, 218);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 15);
+            this.label8.TabIndex = 44;
+            this.label8.Text = "m/min^2";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("新細明體", 11F);
+            this.label7.Location = new System.Drawing.Point(610, 135);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 15);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "minute(s)";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("新細明體", 11F);
+            this.label6.Location = new System.Drawing.Point(610, 93);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 15);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "m/min";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("新細明體", 11F);
+            this.label5.Location = new System.Drawing.Point(610, 53);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 15);
+            this.label5.TabIndex = 41;
+            this.label5.Text = "m/min";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label4.Location = new System.Drawing.Point(129, 269);
+            this.label4.Location = new System.Drawing.Point(308, 210);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 15);
             this.label4.TabIndex = 40;
@@ -127,7 +211,7 @@
             // 
             this.stopButton.Enabled = false;
             this.stopButton.Font = new System.Drawing.Font("新細明體", 11F);
-            this.stopButton.Location = new System.Drawing.Point(282, 201);
+            this.stopButton.Location = new System.Drawing.Point(579, 357);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(174, 23);
             this.stopButton.TabIndex = 39;
@@ -138,7 +222,7 @@
             // startButton
             // 
             this.startButton.Font = new System.Drawing.Font("新細明體", 11F);
-            this.startButton.Location = new System.Drawing.Point(282, 160);
+            this.startButton.Location = new System.Drawing.Point(399, 357);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(174, 23);
             this.startButton.TabIndex = 38;
@@ -150,7 +234,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label3.Location = new System.Drawing.Point(279, 109);
+            this.label3.Location = new System.Drawing.Point(471, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 15);
             this.label3.TabIndex = 37;
@@ -158,16 +242,17 @@
             // 
             // trainTime
             // 
-            this.trainTime.Location = new System.Drawing.Point(356, 102);
+            this.trainTime.Location = new System.Drawing.Point(548, 132);
+            this.trainTime.MaxLength = 2;
             this.trainTime.Name = "trainTime";
-            this.trainTime.Size = new System.Drawing.Size(100, 25);
+            this.trainTime.Size = new System.Drawing.Size(56, 25);
             this.trainTime.TabIndex = 36;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label2.Location = new System.Drawing.Point(279, 67);
+            this.label2.Location = new System.Drawing.Point(471, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 15);
             this.label2.TabIndex = 35;
@@ -175,16 +260,17 @@
             // 
             // minSpeed
             // 
-            this.minSpeed.Location = new System.Drawing.Point(356, 60);
+            this.minSpeed.Location = new System.Drawing.Point(548, 90);
+            this.minSpeed.MaxLength = 2;
             this.minSpeed.Name = "minSpeed";
-            this.minSpeed.Size = new System.Drawing.Size(100, 25);
+            this.minSpeed.Size = new System.Drawing.Size(56, 25);
             this.minSpeed.TabIndex = 34;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label1.Location = new System.Drawing.Point(279, 27);
+            this.label1.Location = new System.Drawing.Point(471, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 15);
             this.label1.TabIndex = 33;
@@ -192,14 +278,15 @@
             // 
             // maxSpeed
             // 
-            this.maxSpeed.Location = new System.Drawing.Point(356, 20);
+            this.maxSpeed.Location = new System.Drawing.Point(548, 50);
+            this.maxSpeed.MaxLength = 2;
             this.maxSpeed.Name = "maxSpeed";
-            this.maxSpeed.Size = new System.Drawing.Size(100, 25);
+            this.maxSpeed.Size = new System.Drawing.Size(56, 25);
             this.maxSpeed.TabIndex = 32;
             // 
             // speedSelect5
             // 
-            this.speedSelect5.Location = new System.Drawing.Point(381, 266);
+            this.speedSelect5.Location = new System.Drawing.Point(560, 208);
             this.speedSelect5.Maximum = new decimal(new int[] {
             30,
             0,
@@ -216,7 +303,7 @@
             // 
             // speedSelect4
             // 
-            this.speedSelect4.Location = new System.Drawing.Point(341, 266);
+            this.speedSelect4.Location = new System.Drawing.Point(520, 208);
             this.speedSelect4.Maximum = new decimal(new int[] {
             30,
             0,
@@ -233,7 +320,7 @@
             // 
             // speedSelect3
             // 
-            this.speedSelect3.Location = new System.Drawing.Point(301, 266);
+            this.speedSelect3.Location = new System.Drawing.Point(480, 208);
             this.speedSelect3.Maximum = new decimal(new int[] {
             30,
             0,
@@ -250,7 +337,7 @@
             // 
             // speedSelect2
             // 
-            this.speedSelect2.Location = new System.Drawing.Point(261, 266);
+            this.speedSelect2.Location = new System.Drawing.Point(440, 208);
             this.speedSelect2.Maximum = new decimal(new int[] {
             30,
             0,
@@ -267,7 +354,7 @@
             // 
             // speedSelect1
             // 
-            this.speedSelect1.Location = new System.Drawing.Point(221, 266);
+            this.speedSelect1.Location = new System.Drawing.Point(400, 208);
             this.speedSelect1.Maximum = new decimal(new int[] {
             30,
             0,
@@ -284,7 +371,7 @@
             // 
             // speedSelect10
             // 
-            this.speedSelect10.Location = new System.Drawing.Point(583, 266);
+            this.speedSelect10.Location = new System.Drawing.Point(762, 208);
             this.speedSelect10.Maximum = new decimal(new int[] {
             30,
             0,
@@ -301,7 +388,7 @@
             // 
             // speedSelect9
             // 
-            this.speedSelect9.Location = new System.Drawing.Point(543, 266);
+            this.speedSelect9.Location = new System.Drawing.Point(722, 208);
             this.speedSelect9.Maximum = new decimal(new int[] {
             30,
             0,
@@ -318,7 +405,7 @@
             // 
             // speedSelect8
             // 
-            this.speedSelect8.Location = new System.Drawing.Point(503, 266);
+            this.speedSelect8.Location = new System.Drawing.Point(682, 208);
             this.speedSelect8.Maximum = new decimal(new int[] {
             30,
             0,
@@ -335,7 +422,7 @@
             // 
             // speedSelect7
             // 
-            this.speedSelect7.Location = new System.Drawing.Point(463, 266);
+            this.speedSelect7.Location = new System.Drawing.Point(642, 208);
             this.speedSelect7.Maximum = new decimal(new int[] {
             30,
             0,
@@ -352,7 +439,7 @@
             // 
             // speedSelect6
             // 
-            this.speedSelect6.Location = new System.Drawing.Point(423, 266);
+            this.speedSelect6.Location = new System.Drawing.Point(602, 208);
             this.speedSelect6.Maximum = new decimal(new int[] {
             30,
             0,
@@ -403,6 +490,12 @@
             this.locationChart.TabIndex = 0;
             this.locationChart.Text = "chart1";
             // 
+            // resultFileDialog
+            // 
+            this.resultFileDialog.Filter = "文字檔 (*.txt)|*.txt|所有檔案 (*.*)|*.*";
+            this.resultFileDialog.Title = "Save a result File";
+            this.resultFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.resulfFileDialog_FileOk);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -410,7 +503,7 @@
             this.ClientSize = new System.Drawing.Size(1184, 461);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Mouse Escalator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -458,6 +551,14 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataVisualization.Charting.Chart speedChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart locationChart;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.SaveFileDialog resultFileDialog;
+        private System.Windows.Forms.Button fileSelectButton;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox resultFilePath;
     }
 }
 
