@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.serialPortSelect = new System.Windows.Forms.ComboBox();
@@ -236,7 +236,7 @@
             // trainTime
             // 
             this.trainTime.Location = new System.Drawing.Point(548, 50);
-            this.trainTime.MaxLength = 2;
+            this.trainTime.MaxLength = 4;
             this.trainTime.Name = "trainTime";
             this.trainTime.Size = new System.Drawing.Size(56, 25);
             this.trainTime.TabIndex = 36;
@@ -425,10 +425,10 @@
             // 
             // speedChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.speedChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.speedChart.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.speedChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.speedChart.Legends.Add(legend1);
             this.speedChart.Location = new System.Drawing.Point(585, 6);
             this.speedChart.Name = "speedChart";
             this.speedChart.Size = new System.Drawing.Size(550, 396);
@@ -437,10 +437,10 @@
             // 
             // locationChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.locationChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.locationChart.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.locationChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.locationChart.Legends.Add(legend2);
             this.locationChart.Location = new System.Drawing.Point(6, 6);
             this.locationChart.Name = "locationChart";
             this.locationChart.Size = new System.Drawing.Size(550, 396);
