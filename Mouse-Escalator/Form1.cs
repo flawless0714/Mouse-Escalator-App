@@ -13,6 +13,7 @@ namespace Mouse_Escalator
 {
     public partial class Form1 : Form
     {
+        bool manualMode = false;
         long endTimestamp;
         int[] IR = new int[10];
         int speed;
@@ -39,19 +40,20 @@ namespace Mouse_Escalator
         {
             string[] ports = SerialPort.GetPortNames();
             serialPortSelect.Items.AddRange(ports);
+            manualStopButton.Enabled = false;
 
-            serialPort.PortName = "COM1";
-            serialPort.DataBits = 8;
-            serialPort.Parity = Parity.None;
-            serialPort.StopBits = StopBits.One;
-            serialPort.BaudRate = 9600;
+            //serialPort.PortName = "COM1"; following is for debug use
+            //serialPort.DataBits = 8;
+            //serialPort.Parity = Parity.None;
+            //serialPort.StopBits = StopBits.One;
+            //serialPort.BaudRate = 9600;
 
-            serialPort.Open();
-            serialPort.DiscardOutBuffer();
-            serialPort.DiscardInBuffer();
-            serialPort.DataReceived += new SerialDataReceivedEventHandler(onSerialPortReceive);
+            //serialPort.Open();
+            //serialPort.DiscardOutBuffer();
+            //serialPort.DiscardInBuffer();
+            //serialPort.DataReceived += new SerialDataReceivedEventHandler(onSerialPortReceive);
 
-            
+
             locationSeries.ChartType = SeriesChartType.Line;
             locationSeries.BorderWidth = 2;
             //locationSeries.Points.DataBindY(value);
@@ -88,12 +90,20 @@ namespace Mouse_Escalator
                 resultFilePath.Text = "File path error";
                 return;
             }
-
-            serialPort.PortName = serialPortSelect.Text;
-            serialPort.DataBits = 8;
-            serialPort.Parity = Parity.None;
-            serialPort.StopBits = StopBits.One;
-            serialPort.BaudRate = 9600;
+            try
+            {
+                serialPort.PortName = serialPortSelect.Text;
+                serialPort.DataBits = 8;
+                serialPort.Parity = Parity.None;
+                serialPort.StopBits = StopBits.One;
+                serialPort.BaudRate = 9600;
+            }
+            catch
+            {
+                serialPortSelect.ForeColor = Color.Red;
+                serialPortSelect.Text = "File path error";
+                return;
+            }
             try
             {
                 serialPort.Open();
@@ -190,11 +200,14 @@ namespace Mouse_Escalator
                         {
                             if (IR[j] == 1)
                             {
-                                int targetSpeed = Decimal.ToInt32(((NumericUpDown)this.Controls.Find("speedSelect" + j.ToString(), true)[0]).Value) * 1000;
-                                byte[] dacValue = new byte[2];
-                                dacValue[0] = (byte)(targetSpeed >> 8);
-                                dacValue[1] = (byte)((targetSpeed << 6) & 0xC0);
-                                serialPort.Write(dacValue, 0, 2);
+                                if(!manualMode) // since we are not in manual mode
+                                {
+                                    int targetSpeed = Decimal.ToInt32(((NumericUpDown)this.Controls.Find("speedSelect" + j.ToString(), true)[0]).Value) * 1000;
+                                    byte[] dacValue = new byte[2];
+                                    dacValue[0] = (byte)(targetSpeed >> 8);
+                                    dacValue[1] = (byte)((targetSpeed << 6) & 0xC0);
+                                    serialPort.Write(dacValue, 0, 2);
+                                }
                                 triggeredIR = j;
                                 break;
                             }
@@ -224,6 +237,75 @@ namespace Mouse_Escalator
                     }
                 }
             }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+                
+            
+
+        }
+
+        private void manualStartButton_Click(object sender, EventArgs e)
+        {
+            manualStartButton.Enabled = false;
+            manualMode = true;
+            try
+            {
+                resultFileStream = (System.IO.FileStream)resultFileDialog.OpenFile();
+                resultStreamWriter = new StreamWriter(resultFileStream);
+            }
+            catch
+            {
+                resultFilePath.ForeColor = Color.Red;
+                resultFilePath.Text = "File path error";
+                manualStartButton.Enabled = true;
+                return;
+            }
+            serialPort.PortName = serialPortSelect.Text;
+            serialPort.DataBits = 8;
+            serialPort.Parity = Parity.None;
+            serialPort.StopBits = StopBits.One;
+            serialPort.BaudRate = 9600;
+            try
+            {
+                serialPort.Open();
+                serialPort.DiscardOutBuffer();
+                serialPort.DiscardInBuffer();
+                serialPort.DataReceived += new SerialDataReceivedEventHandler(onSerialPortReceive);
+                serialPortSelect.ForeColor = Color.Black;
+            }
+            catch
+            {
+                serialPortSelect.ForeColor = Color.Red;
+                serialPortSelect.Text = "Port error";
+                manualStartButton.Enabled = true;
+                return;
+            }
+            receiveDataList.Clear();
+            startButton.Enabled = false;
+            stopButton.Enabled = false;
+            trainTime.Enabled = false;
+            fileSelectButton.Enabled = false;
+            controlTimer.Enabled = true;
+        }
+
+        private void manualStopButton_Click(object sender, EventArgs e)
+        {
+            controlTimer.Enabled = false;
+            startButton.Enabled = true;
+            stopButton.Enabled = false;
+            trainTime.Enabled = true;
+            fileSelectButton.Enabled = true;
+            resultStreamWriter.Close();
+            resultFileStream.Close();
+            manualStopButton.Enabled = false;
+            manualMode = false;
         }
     }
 }

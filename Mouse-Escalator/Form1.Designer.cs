@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.serialPortSelect = new System.Windows.Forms.ComboBox();
@@ -62,6 +62,10 @@
             this.locationChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.resultFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.controlTimer = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.manualStartButton = new System.Windows.Forms.Button();
+            this.manualStopButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.speedSelect5)).BeginInit();
@@ -83,7 +87,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("新細明體", 11F);
+            this.tabControl1.Font = new System.Drawing.Font("PMingLiU", 11F);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -92,6 +96,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.manualStopButton);
+            this.tabPage1.Controls.Add(this.manualStartButton);
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.serialPortSelect);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.fileSelectButton);
@@ -121,11 +129,12 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "設定";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // serialPortSelect
             // 
             this.serialPortSelect.FormattingEnabled = true;
-            this.serialPortSelect.Location = new System.Drawing.Point(515, 280);
+            this.serialPortSelect.Location = new System.Drawing.Point(700, 283);
             this.serialPortSelect.Name = "serialPortSelect";
             this.serialPortSelect.Size = new System.Drawing.Size(121, 23);
             this.serialPortSelect.TabIndex = 50;
@@ -134,8 +143,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label1.Location = new System.Drawing.Point(438, 283);
+            this.label1.Font = new System.Drawing.Font("PMingLiU", 11F);
+            this.label1.Location = new System.Drawing.Point(623, 286);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 49;
@@ -143,7 +152,7 @@
             // 
             // fileSelectButton
             // 
-            this.fileSelectButton.Location = new System.Drawing.Point(759, 207);
+            this.fileSelectButton.Location = new System.Drawing.Point(944, 210);
             this.fileSelectButton.Name = "fileSelectButton";
             this.fileSelectButton.Size = new System.Drawing.Size(56, 23);
             this.fileSelectButton.TabIndex = 47;
@@ -154,8 +163,8 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label9.Location = new System.Drawing.Point(322, 211);
+            this.label9.Font = new System.Drawing.Font("PMingLiU", 11F);
+            this.label9.Location = new System.Drawing.Point(507, 214);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 15);
             this.label9.TabIndex = 46;
@@ -164,7 +173,7 @@
             // resultFilePath
             // 
             this.resultFilePath.BackColor = System.Drawing.Color.White;
-            this.resultFilePath.Location = new System.Drawing.Point(399, 205);
+            this.resultFilePath.Location = new System.Drawing.Point(584, 208);
             this.resultFilePath.Name = "resultFilePath";
             this.resultFilePath.ReadOnly = true;
             this.resultFilePath.Size = new System.Drawing.Size(354, 25);
@@ -173,8 +182,8 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label8.Location = new System.Drawing.Point(802, 136);
+            this.label8.Font = new System.Drawing.Font("PMingLiU", 11F);
+            this.label8.Location = new System.Drawing.Point(987, 139);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 15);
             this.label8.TabIndex = 44;
@@ -183,8 +192,8 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label7.Location = new System.Drawing.Point(610, 53);
+            this.label7.Font = new System.Drawing.Font("PMingLiU", 11F);
+            this.label7.Location = new System.Drawing.Point(795, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 15);
             this.label7.TabIndex = 43;
@@ -193,8 +202,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label4.Location = new System.Drawing.Point(322, 128);
+            this.label4.Font = new System.Drawing.Font("PMingLiU", 11F);
+            this.label4.Location = new System.Drawing.Point(507, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 15);
             this.label4.TabIndex = 40;
@@ -203,8 +212,8 @@
             // stopButton
             // 
             this.stopButton.Enabled = false;
-            this.stopButton.Font = new System.Drawing.Font("新細明體", 11F);
-            this.stopButton.Location = new System.Drawing.Point(602, 353);
+            this.stopButton.Font = new System.Drawing.Font("PMingLiU", 11F);
+            this.stopButton.Location = new System.Drawing.Point(787, 356);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(174, 35);
             this.stopButton.TabIndex = 39;
@@ -214,8 +223,8 @@
             // 
             // startButton
             // 
-            this.startButton.Font = new System.Drawing.Font("新細明體", 11F);
-            this.startButton.Location = new System.Drawing.Point(380, 353);
+            this.startButton.Font = new System.Drawing.Font("PMingLiU", 11F);
+            this.startButton.Location = new System.Drawing.Point(565, 356);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(174, 35);
             this.startButton.TabIndex = 38;
@@ -226,8 +235,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("新細明體", 11F);
-            this.label3.Location = new System.Drawing.Point(471, 53);
+            this.label3.Font = new System.Drawing.Font("PMingLiU", 11F);
+            this.label3.Location = new System.Drawing.Point(656, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 15);
             this.label3.TabIndex = 37;
@@ -235,7 +244,7 @@
             // 
             // trainTime
             // 
-            this.trainTime.Location = new System.Drawing.Point(548, 50);
+            this.trainTime.Location = new System.Drawing.Point(733, 53);
             this.trainTime.MaxLength = 4;
             this.trainTime.Name = "trainTime";
             this.trainTime.Size = new System.Drawing.Size(56, 25);
@@ -243,7 +252,7 @@
             // 
             // speedSelect5
             // 
-            this.speedSelect5.Location = new System.Drawing.Point(560, 126);
+            this.speedSelect5.Location = new System.Drawing.Point(745, 129);
             this.speedSelect5.Maximum = new decimal(new int[] {
             30,
             0,
@@ -260,7 +269,7 @@
             // 
             // speedSelect4
             // 
-            this.speedSelect4.Location = new System.Drawing.Point(520, 126);
+            this.speedSelect4.Location = new System.Drawing.Point(705, 129);
             this.speedSelect4.Maximum = new decimal(new int[] {
             30,
             0,
@@ -277,7 +286,7 @@
             // 
             // speedSelect3
             // 
-            this.speedSelect3.Location = new System.Drawing.Point(480, 126);
+            this.speedSelect3.Location = new System.Drawing.Point(665, 129);
             this.speedSelect3.Maximum = new decimal(new int[] {
             30,
             0,
@@ -294,7 +303,7 @@
             // 
             // speedSelect2
             // 
-            this.speedSelect2.Location = new System.Drawing.Point(440, 126);
+            this.speedSelect2.Location = new System.Drawing.Point(625, 129);
             this.speedSelect2.Maximum = new decimal(new int[] {
             30,
             0,
@@ -311,7 +320,7 @@
             // 
             // speedSelect1
             // 
-            this.speedSelect1.Location = new System.Drawing.Point(400, 126);
+            this.speedSelect1.Location = new System.Drawing.Point(585, 129);
             this.speedSelect1.Maximum = new decimal(new int[] {
             30,
             0,
@@ -328,7 +337,7 @@
             // 
             // speedSelect10
             // 
-            this.speedSelect10.Location = new System.Drawing.Point(762, 126);
+            this.speedSelect10.Location = new System.Drawing.Point(947, 129);
             this.speedSelect10.Maximum = new decimal(new int[] {
             30,
             0,
@@ -345,7 +354,7 @@
             // 
             // speedSelect9
             // 
-            this.speedSelect9.Location = new System.Drawing.Point(722, 126);
+            this.speedSelect9.Location = new System.Drawing.Point(907, 129);
             this.speedSelect9.Maximum = new decimal(new int[] {
             30,
             0,
@@ -362,7 +371,7 @@
             // 
             // speedSelect8
             // 
-            this.speedSelect8.Location = new System.Drawing.Point(682, 126);
+            this.speedSelect8.Location = new System.Drawing.Point(867, 129);
             this.speedSelect8.Maximum = new decimal(new int[] {
             30,
             0,
@@ -379,7 +388,7 @@
             // 
             // speedSelect7
             // 
-            this.speedSelect7.Location = new System.Drawing.Point(642, 126);
+            this.speedSelect7.Location = new System.Drawing.Point(827, 129);
             this.speedSelect7.Maximum = new decimal(new int[] {
             30,
             0,
@@ -396,7 +405,7 @@
             // 
             // speedSelect6
             // 
-            this.speedSelect6.Location = new System.Drawing.Point(602, 126);
+            this.speedSelect6.Location = new System.Drawing.Point(787, 129);
             this.speedSelect6.Maximum = new decimal(new int[] {
             30,
             0,
@@ -425,10 +434,10 @@
             // 
             // speedChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.speedChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.speedChart.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.speedChart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.speedChart.Legends.Add(legend5);
             this.speedChart.Location = new System.Drawing.Point(585, 6);
             this.speedChart.Name = "speedChart";
             this.speedChart.Size = new System.Drawing.Size(550, 396);
@@ -437,10 +446,10 @@
             // 
             // locationChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.locationChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.locationChart.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.locationChart.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.locationChart.Legends.Add(legend6);
             this.locationChart.Location = new System.Drawing.Point(6, 6);
             this.locationChart.Name = "locationChart";
             this.locationChart.Size = new System.Drawing.Size(550, 396);
@@ -456,6 +465,47 @@
             // controlTimer
             // 
             this.controlTimer.Tick += new System.EventHandler(this.controlTimer_Tick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(45, 173);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(319, 16);
+            this.label2.TabIndex = 52;
+            this.label2.Text = "請先選擇儲存位置與RS232 Port再啟用本功能";
+            // 
+            // manualStartButton
+            // 
+            this.manualStartButton.Location = new System.Drawing.Point(53, 203);
+            this.manualStartButton.Name = "manualStartButton";
+            this.manualStartButton.Size = new System.Drawing.Size(133, 34);
+            this.manualStartButton.TabIndex = 0;
+            this.manualStartButton.Text = "開始 (手動調速)";
+            this.manualStartButton.UseVisualStyleBackColor = true;
+            this.manualStartButton.Click += new System.EventHandler(this.manualStartButton_Click);
+            // 
+            // manualStopButton
+            // 
+            this.manualStopButton.Location = new System.Drawing.Point(212, 203);
+            this.manualStopButton.Name = "manualStopButton";
+            this.manualStopButton.Size = new System.Drawing.Size(133, 34);
+            this.manualStopButton.TabIndex = 53;
+            this.manualStopButton.Text = "停止 (手動調速)";
+            this.manualStopButton.UseVisualStyleBackColor = true;
+            this.manualStopButton.Click += new System.EventHandler(this.manualStopButton_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("PMingLiU", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label5.Location = new System.Drawing.Point(58, 129);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(271, 27);
+            this.label5.TabIndex = 54;
+            this.label5.Text = "手動調速(含紀錄功能)";
             // 
             // Form1
             // 
@@ -517,6 +567,10 @@
         private System.Windows.Forms.Timer controlTimer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox serialPortSelect;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button manualStopButton;
+        private System.Windows.Forms.Button manualStartButton;
     }
 }
 
