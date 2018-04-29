@@ -311,13 +311,23 @@ namespace Mouse_Escalator
                                 break;
                             }
                         }
-
-                        resultStreamWriter.WriteLine("Speed: " + (speed / 10).ToString() + " cm/min");
-                        resultStreamWriter.WriteLine("IR: " + string.Join(",", IR));
-                        resultStreamWriter.WriteLine();
+                        /*---------------------data record-----------------------*/
+                        int pos = 0;
+                        for (int y = 1; y <= 9; y++)
+                        {
+                            if (IR[y] == 1)
+                            {
+                                pos = 9 - y;
+                                break;
+                            }
+                            else if (IR[y] == 1 && y == 9)
+                            {
+                                pos = 9;
+                                break;
+                            }
+                        }
+                        resultStreamWriter.WriteLine(pos.ToString() + "  " + (speed / 10).ToString());
                         resultStreamWriter.Flush();
-                        
-
                         receiveDataList.Clear();
                         break; 
                     }
